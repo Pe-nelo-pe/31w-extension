@@ -30,13 +30,13 @@ function neloc_enqueue(){
                      plugin_dir_url(__FILE__) . "js/carrousel.js",
                      array(),
                      $version_js,
-                     false);
+                     true);
 }
 
 add_action("wp_enqueue_scripts", "neloc_enqueue");
 
 function genere_boite(){
-    $contenu = "<div class = 'carrousel'>Carrousel</div>";
+    $contenu = "<button class='btn_modale'> Boîte modale </button><div class = 'carrousel'> <button class='btn_fermer'>X</button></div>";
     return $contenu;
 }
 
