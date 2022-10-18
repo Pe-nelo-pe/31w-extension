@@ -36,7 +36,13 @@ function neloc_enqueue(){
 add_action("wp_enqueue_scripts", "neloc_enqueue");
 
 function genere_boite(){
-    $contenu = "<button class='btn_modale'> Boîte modale </button><div class = 'carrousel'> <button class='btn_fermer'>X</button></div>";
+    $contenu = "<button class='btn_modale'> Boîte modale </button>
+                <div class = 'carrousel'>
+                    <button class='btn_fermer'>X</button>
+                    <figure class='carrousel___figure'>
+                    </figure>
+                    <form class='carrousel__form'></form>
+                </div>";
     return $contenu;
 }
 
