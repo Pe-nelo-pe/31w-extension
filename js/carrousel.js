@@ -5,7 +5,7 @@
     let elCarrousel = document.querySelector(".carrousel");
 
     //Bouton temporaire - ouvrir carrousel
-    let elBtnModale = document.querySelector(".btn_modale");
+    //let elBtnModale = document.querySelector(".btn_modale");
 
     //Bouton fermeture carrousel
     let elBtnFermer = document.querySelector(".btn_fermer");
@@ -29,7 +29,6 @@
 
 // ------------------------------------------ Étape 1 - parcourir les img de la galerie
 
-
     for (const img of elmGalerieImg){
         
        ajouter_img_carrousel(img)
@@ -37,23 +36,21 @@
 
        //Event listener sur les img de la galerie
        img.addEventListener('mousedown', function(){
-        //console.log('galerie');
-        //console.log(this.dataset.index);
-        elCarrousel.classList.add("carrousel--ouvrir")
-        elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
-        elmCarrousel__form.children[this.dataset.index].checked = true;
-        dernierIndex = this.dataset.index;
+            elCarrousel.classList.add("carrousel--ouvrir")
+            elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
+            elmCarrousel__form.children[this.dataset.index].checked = true;
+            dernierIndex = this.dataset.index;
        })
 
       
     }
  
     /**Function Ouvre modal */
-    elBtnModale.addEventListener("mousedown", function(){
-        elCarrousel.classList.add("carrousel--ouvrir")
+    //elBtnModale.addEventListener("mousedown", function(){
+       // elCarrousel.classList.add("carrousel--ouvrir")
        // ajouter_elmImg(img);
   
-    } )
+    //} )
 
     /**Function Ferme modal */
     elBtnFermer.addEventListener("mousedown", function(){
@@ -62,8 +59,6 @@
         if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
             elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
         }
-
- 
     } )
 
 
@@ -86,7 +81,7 @@
         elmCarrousel__form__radio.dataset.index = index;
         index++;
         elmCarrousel__form.appendChild(elmCarrousel__form__radio)
-        
+
             // ------------- Event sur radio - affiche bonne image
         elmCarrousel__form__radio.addEventListener('mousedown', function(){
             if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
