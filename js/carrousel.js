@@ -4,9 +4,6 @@
     //Conteneur principal carrousel
     let elCarrousel = document.querySelector(".carrousel");
 
-    //Bouton temporaire - ouvrir carrousel
-    //let elBtnModale = document.querySelector(".btn_modale");
-
     //Bouton fermeture carrousel
     let elBtnFermer = document.querySelector(".btn_fermer");
 
@@ -16,6 +13,10 @@
     //Formulaire (ensemble des btn radios)
     let elmCarrousel__form = document.querySelector(".carrousel__form")
 
+    let elBtnDroit = document.querySelector(".droite");
+    let elBtnGauche = document.querySelector(".gauche");
+
+  
 
 // ------------------------------------------Elements galerie
 
@@ -42,16 +43,11 @@
             dernierIndex = this.dataset.index;
        })
 
+     
       
-    }
- 
-    /**Function Ouvre modal */
-    //elBtnModale.addEventListener("mousedown", function(){
-       // elCarrousel.classList.add("carrousel--ouvrir")
-       // ajouter_elmImg(img);
-  
-    //} )
+    } 
 
+    
     /**Function Ferme modal */
     elBtnFermer.addEventListener("mousedown", function(){
         elCarrousel.classList.remove("carrousel--ouvrir")
@@ -90,6 +86,16 @@
             elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
             dernierIndex = this.dataset.index;
         })
+        elBtnDroit.addEventListener('mousedown', function(){
+            //let elmCarrousel__figure = document.querySelector('.carrousel__figure')
+            if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
+                elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
+            }
+            console.log(elmCarrousel__figure.children[index]);
+            elmCarrousel__figure.children[this.dataset.index].nextElementSibling.classList.add("carrousel__figure__img--activer");
+            index++;
+            dernierIndex = this.dataset.index;
+    })
         
     }
 

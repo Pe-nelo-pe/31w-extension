@@ -29,7 +29,6 @@
     background-color: transparent;
     border: none;
     color: white;
-  
     font-weight: 700;
     z-index: 3;
 }
@@ -95,3 +94,55 @@
     transform: scale(1);
   }
 
+
+  .carrousel .fleche{
+    z-index: 4;
+  }
+
+  .carrousel button {
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    outline:0;
+  }
+  
+  .carrousel svg {
+    padding: 5px;
+  }
+  
+  .carrousel .fleche {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -45px;
+    margin-left: -40px;
+    width: 70px;
+    height: 90px;
+  
+  }
+  
+  .gauche {
+    left: 5%;
+  }
+  
+  .droite {
+    left: 95%;
+  }
+  
+  .gauche:hover polyline,
+  .droite:hover polyline {
+    stroke-width: 3;
+    stroke: green;
+  }
+  
+  .gauche:active polyline,
+  .droite:active polyline {
+    stroke-width: 6;
+    transition: all 100ms ease-in-out;
+  }
+  
+
+  polyline {
+    stroke-width: 3;
+    transition: all 250ms ease-in-out;
+  }
