@@ -31,33 +31,50 @@
 
 
     for (const img of elmGalerieImg){
-
+        
        ajouter_img_carrousel(img)
        ajouter_btn_radio()
 
-       /**Function Ouvre modal */
-        elBtnModale.addEventListener("mousedown", function(){
-           elCarrousel.classList.add("carrousel--ouvrir")
-           // ajouter_elmImg(img);
-  
-        } )
+       //Event listener sur les img de la galerie
+       img.addEventListener('mousedown', function(){
+        //console.log('galerie');
+        //console.log(this.dataset.index);
+        elCarrousel.classList.add("carrousel--ouvrir")
+        elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
+        elmCarrousel__form.children[this.dataset.index].checked = true;
+        dernierIndex = this.dataset.index;
+       })
+
+      
     }
+ 
+    /**Function Ouvre modal */
+    elBtnModale.addEventListener("mousedown", function(){
+        elCarrousel.classList.add("carrousel--ouvrir")
+       // ajouter_elmImg(img);
+  
+    } )
 
     /**Function Ferme modal */
     elBtnFermer.addEventListener("mousedown", function(){
         elCarrousel.classList.remove("carrousel--ouvrir")
+
+        if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
+            elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
+        }
+
  
     } )
 
 
     function ajouter_img_carrousel(img){
-        //let elmImg 
+        img.dataset.index = index;
         let elmCarrousel__figure__img = document.createElement('img') // création d'un élément img
         elmCarrousel__figure__img.setAttribute("src", img.getAttribute("src"))// on récupère l'adresse URL de l'image de la galerie
         elmCarrousel__figure__img.classList.add("carrousel__figure__img")// ajout d'une classe css
-        //elmCarrousel__figure__img.dataset.index = index;  // ajout index pour matcher avec les radios 
+        elmCarrousel__figure__img.dataset.index = index;  // ajout index pour matcher avec les radios 
         elmCarrousel__figure.appendChild(elmCarrousel__figure__img)// ajouter l'élément img dans le carrousel
-console.log(elmCarrousel__figure__img.dataset.index);
+
     }
 
     // ----------------- Ajout btn radio
@@ -69,16 +86,16 @@ console.log(elmCarrousel__figure__img.dataset.index);
         elmCarrousel__form__radio.dataset.index = index;
         index++;
         elmCarrousel__form.appendChild(elmCarrousel__form__radio)
-
-
+        
             // ------------- Event sur radio - affiche bonne image
         elmCarrousel__form__radio.addEventListener('mousedown', function(){
-console.log(this.dataset.index);
-//condition pour désactiver l'image d'avant
-           // elmCarrousel__figure.children[this.dataset.dernierIndex].classList.remove("carrousel__figure__img--activer")
-            elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer")
+            if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
+                elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
+            }
+            elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
+            dernierIndex = this.dataset.index;
         })
-
+        
     }
 
 })();
