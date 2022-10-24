@@ -42,11 +42,19 @@
             elmCarrousel__form.children[this.dataset.index].checked = true;
             dernierIndex = this.dataset.index;
        })
-
-     
-      
     } 
 
+    elBtnDroit.addEventListener('mousedown', function(){
+            let elmCarrousel__figure__img = document.querySelector('.carrousel__figure__img--activer')
+             console.log(elmCarrousel__figure__img );
+            //if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
+                //this.elmCarrousel__figure__img.classList.remove("carrousel__figure__img--activer");
+            //}
+            
+            //this.elmCarrousel__figure__img.nextElementSibling.classList.add("carrousel__figure__img--activer");
+            //index++;
+            //dernierIndex = this.dataset.index;
+    })
     
     /**Function Ferme modal */
     elBtnFermer.addEventListener("mousedown", function(){
@@ -86,17 +94,8 @@
             elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
             dernierIndex = this.dataset.index;
         })
-        elBtnDroit.addEventListener('mousedown', function(){
-            //let elmCarrousel__figure = document.querySelector('.carrousel__figure')
-            if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
-                elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
-            }
-            console.log(elmCarrousel__figure.children[index]);
-            elmCarrousel__figure.children[this.dataset.index].nextElementSibling.classList.add("carrousel__figure__img--activer");
-            index++;
-            dernierIndex = this.dataset.index;
-    })
-        
+         
     }
+    
 
 })();

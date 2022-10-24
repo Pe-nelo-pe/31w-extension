@@ -1,3 +1,5 @@
+
+// ------------ Carrousel
 .carrousel{
     position: fixed;
     left:  12.5vw;
@@ -16,6 +18,8 @@
     transform: scale(1);
     opacity: 1;
 }
+
+// ------------ btn pour fermer
 
 .btn_fermer{
     display: flex;
@@ -38,6 +42,8 @@
     background-color: #fff;
 }
 
+
+// ------------ Image du carrousel
 .carrousel__figure__img{
     display: block;
     width: 100%;
@@ -55,6 +61,8 @@
 
 }
 
+
+// ------------ Btn radio du carrousel
 .carrousel__form{
     position: absolute;
     bottom: 0;
@@ -78,8 +86,7 @@
     place-content: center;
   }
 
-
-  .carrousel__form input[type="radio"]::before {
+.carrousel__form input[type="radio"]::before {
     content: "";
     width: 1em;
     height: 1em;
@@ -90,27 +97,29 @@
     background-color: green;
   }
   
-  .carrousel__form input[type="radio"]:checked::before {
+.carrousel__form input[type="radio"]:checked::before {
     transform: scale(1);
   }
 
 
-  .carrousel .fleche{
+
+  // ------------ Flèches précedant/prochain du carrousel
+.carrousel .fleche{
     z-index: 4;
   }
 
-  .carrousel button {
+.carrousel button {
     -webkit-appearance: none;
     background: transparent;
     border: 0;
     outline:0;
   }
   
-  .carrousel svg {
+.carrousel svg {
     padding: 5px;
   }
   
-  .carrousel .fleche {
+.carrousel .fleche {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -118,31 +127,29 @@
     margin-left: -40px;
     width: 70px;
     height: 90px;
-  
   }
   
-  .gauche {
+.gauche {
     left: 5%;
   }
   
-  .droite {
+.droite {
     left: 95%;
   }
   
-  .gauche:hover polyline,
-  .droite:hover polyline {
+.gauche:hover polyline,
+.droite:hover polyline {
     stroke-width: 3;
     stroke: green;
   }
   
-  .gauche:active polyline,
-  .droite:active polyline {
+.gauche:active polyline,
+.droite:active polyline {
     stroke-width: 6;
     transition: all 100ms ease-in-out;
   }
   
-
-  polyline {
+polyline {
     stroke-width: 3;
     transition: all 250ms ease-in-out;
   }
