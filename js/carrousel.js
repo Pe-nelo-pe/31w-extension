@@ -15,7 +15,6 @@
 
     let elBtnDroit = document.querySelector(".droite");
     let elBtnGauche = document.querySelector(".gauche");
-
   
 
 // ------------------------------------------Elements galerie
@@ -37,47 +36,54 @@
 
        //Event listener sur les img de la galerie
        img.addEventListener('mousedown', function(){
-            elCarrousel.classList.add("carrousel--ouvrir")
+            elCarrousel.classList.add("carrousel--ouvrir")    
             elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
             elmCarrousel__form.children[this.dataset.index].checked = true;
             dernierIndex = this.dataset.index;
+            
        })
+
+  
     } 
 
-    elBtnDroit.addEventListener('mousedown', function(e){
+    elBtnDroit.addEventListener('mousedown', function(){
         let el = document.querySelector(".carrousel__figure__img--activer")
-        console.log(el);
         let elIndex = el.dataset.index
-        console.log(elIndex);
+        let imgActive;
 
-        // elmCarrousel__figure__img = document.querySelector('.carrousel__figure__img--activer')
-        //      console.log(elmCarrousel__figure__img );
-        //     //if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
-        //     //}
-            
-        //     elmCarrousel__figure__img.nextElementSibling.classList.add("carrousel__figure__img--activer");
-        //     elmCarrousel__figure__img.classList.remove("carrousel__figure__img--activer");
-        //     //index++;
-        //     //dernierIndex = this.dataset.index;
+        el.classList.remove("carrousel__figure__img--activer");
+
+        if(elIndex == elmGalerieImg.length - 1){
+            imgActive = 0;
+        } else {
+            imgActive = parseInt(elIndex) + 1;
+        }
+        
+          
+        document.querySelector(`[type='radio'][data-index='${elIndex}']`).checked = false;
+        document.querySelector(`[type='radio'][data-index='${imgActive}']`).checked = true;
+        elCarrousel.querySelector(`[data-index='${imgActive}']`).classList.add("carrousel__figure__img--activer");
+          
 
 
-            // elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
-            // console.log( elmCarrousel__figure.children[this.dataset.index]);
-            //console.log(this.elIndex);
-            if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
-                elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
-            }
-            elmCarrousel__figure.children[dernierIndex++].nextElementSibling.classList.add("carrousel__figure__img--activer");
-            dernierIndex = dernierIndex ++;
     })
     
-    elBtnGauche.addEventListener('mousedown', function(e){
-       
-            if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
-                elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
-            }
-            elmCarrousel__figure.children[dernierIndex--].previousElementSibling.classList.add("carrousel__figure__img--activer");
-            dernierIndex = dernierIndex --;
+    elBtnGauche.addEventListener('mousedown', function(){
+        let el = document.querySelector(".carrousel__figure__img--activer")
+        let elIndex = el.dataset.index
+        let imgActive;
+
+        if(elIndex == 0){
+            imgActive = elmGalerieImg.length - 1;
+        } else {
+            imgActive = parseInt(elIndex) - 1;
+        }
+        el.classList.remove("carrousel__figure__img--activer");
+        elCarrousel.querySelector(`[data-index='${imgActive}']`).classList.add("carrousel__figure__img--activer");
+
+        document.querySelector(`[type='radio'][data-index='${elIndex}']`).checked = false;
+        document.querySelector(`[type='radio'][data-index='${imgActive}']`).checked = true;
+    
     })
     
 
@@ -114,20 +120,25 @@
         elmCarrousel__form__radio.setAttribute('class', 'carrousel__form__radio')
         elmCarrousel__form__radio.setAttribute('type', 'radio')
         elmCarrousel__form__radio.dataset.index = index;
+  
         index++;
-        elmCarrousel__form.appendChild(elmCarrousel__form__radio)
+        elmCarrousel__form.appendChild(elmCarrousel__form__radio);
 
 
-            // ------------- Event sur radio - affiche bonne image
+
+        //     // ------------- Event sur radio - affiche bonne image
         elmCarrousel__form__radio.addEventListener('mousedown', function(){
-            if(dernierIndex != -1){ //condition pour désactiver l'image d'avant
-                elmCarrousel__figure.children[dernierIndex].classList.remove("carrousel__figure__img--activer");
-            }
+            let elmImgActive = document.querySelector(".carrousel__figure__img--activer")
+        
+            elmImgActive.classList.remove("carrousel__figure__img--activer");
+        
             elmCarrousel__figure.children[this.dataset.index].classList.add("carrousel__figure__img--activer");
             dernierIndex = this.dataset.index;
         })
-         
-    }
     
+    }
 
+
+         
+         
 })();
