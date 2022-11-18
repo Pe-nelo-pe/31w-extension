@@ -10,18 +10,20 @@
     left:  12.5vw;
     top: 12.5vh;
     height: 75vh;
-    width: 75vw;
+    width: 0vw;
     background-color: black;
     padding: 25px;
-    transform: scale(0);
+   
     opacity: 0;
-    transition: transform 0.5s, opacity 0.5s;
+    transition:  opacity 0.5s, width 0.5s;
+    
     z-index: 1;
 }
 
 .carrousel--ouvrir{
-    transform: scale(1);
     opacity: 1;
+   
+    width: 75vw;
 }
 
 // ------------ btn pour fermer
@@ -60,6 +62,7 @@
     opacity: 0;
     transition: opacity 1s;
 }
+
 
 .carrousel__figure__img--activer{
     opacity: 1;
